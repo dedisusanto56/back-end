@@ -27,19 +27,16 @@ $mahasiswa = [
 </head>
 <body>
     <h1>DATA MAHASISWA</h1>
+    <ul>
     <?php foreach($mahasiswa as $mhs) : ?>
-        <ul>
+        
             <li>
                 <a 
-                    href="latihan2.php?nama=<?= $mhs["nama"]; ?>
-                    &nrp=<?= $mhs["nrp"] ?>
-                    &email=<?= $mhs["email"] ?>
-                    &jurusan=<?= $mhs["jurusan"] ?>
-                    &gambar=<?= $mhs["gambar"] ?>
-                    "><?= $mhs["nama"] ?>
+                    href="get2.php?nama=<?= $mhs["nama"]; ?>&nrp=<?= $mhs["nrp"]; ?>&email=<?= $mhs["email"]; ?>&jurusan=<?= $mhs["jurusan"]; ?>&gambar=<?= $mhs["gambar"]; ?>"><?= $mhs["nama"]; ?>
                 </a>
             </li>
-        </ul>
+        
     <?php endforeach; ?>
+    </ul>
 </body>
 </html>
