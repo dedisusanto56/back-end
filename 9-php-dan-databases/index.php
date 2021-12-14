@@ -1,6 +1,6 @@
 <?php 
 // menghubungkan ke function.php
-require "function.php";
+require 'function.php';
 // atua
 // include "function.php";
 
@@ -46,7 +46,7 @@ $mahasiswa = query("SELECT * FROM mahasiswa");
         <th>Email</th>
         <th>Jurusan</th>
       </tr>
-      <?php $i =1 ?>
+      <?php $i = 1 ?>
       <?php foreach($mahasiswa as $row) : ?>
       <tr>
         <td><?= $i ?></td>
