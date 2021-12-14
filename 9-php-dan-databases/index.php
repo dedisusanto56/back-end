@@ -1,9 +1,11 @@
 <?php 
-//koneksi ke database
-$conn = mysqli_connect("localhost","root","","phpdasar"); 
+// menghubungkan ke function.php
+require "function.php";
+// atua
+// include "function.php";
 
 // ambil data dari tabel mahasiswa
-$result = mysqli_query($conn, "SELECT * FROM mahasiswa");
+$mahasiswa = query("SELECT * FROM mahasiswa");
   // ambil data (fetch) mahasiswa dari object result menggunakan :
   // mysqli_fetch_row()
   // mysqli_fetch_assoc()
@@ -44,20 +46,22 @@ $result = mysqli_query($conn, "SELECT * FROM mahasiswa");
         <th>Email</th>
         <th>Jurusan</th>
       </tr>
-      <?php while($row = mysqli_fetch_assoc($result)) : ?>
+      <?php $i =1 ?>
+      <?php foreach($mahasiswa as $row) : ?>
       <tr>
-        <td>1</td>
+        <td><?= $i ?></td>
         <td>
           <a href="">ubah</a>
           <a href="">hapus</a>
         </td>
-        <td><img src="img/1.jpg" width="50" /></td>
-        <td>123456789</td>
-        <td>sandhika galih</td>
-        <td>sandhikagalih@unpas.ac.id</td>
-        <td>teknik informatika</td>
+        <td><img src="img/<?= $row["gambar"] ?>" width="50" /></td>
+        <td><?= $row["nrp"] ?></td>
+        <td><?= $row["nama"] ?></td>
+        <td><?= $row["email"] ?></td>
+        <td><?= $row["jurusan"] ?></td>
       </tr>
-      <?php endwhile; ?>
+      <?php $i++; ?>
+      <?php endforeach; ?>
     </table>
   </body>
 </html>
