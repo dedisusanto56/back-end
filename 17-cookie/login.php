@@ -1,5 +1,6 @@
 <?php 
 session_start();
+require "function.php";
 // cek cookie lama
 // if(isset($_COOKIE['login'])){
 //     if($_COOKIE['login'] == true){
@@ -29,7 +30,7 @@ if( isset($_SESSION["login"]) ){
   exit;
 }
 
-require "function.php";
+
 
 if(isset($_POST["login"])){
     $username = $_POST["username"];
