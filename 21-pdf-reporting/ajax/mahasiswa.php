@@ -1,5 +1,4 @@
 <?php 
-usleep(500000);
 require '../function.php';
 $keyword = $_GET["keyword"];
 $query = "SELECT * FROM mahasiswa 
