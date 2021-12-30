@@ -1,46 +1,24 @@
 <?php
 class Mahasiswa_model
 {
-  // private $mhs = [
-  //   [
-  //     "nama" => "shandika galih",
-  //     "nrp" => "123456789",
-  //     "email" => "sandhikagalih@unpas.ac.id",
-  //     "jurusan" => "teknik informatika"
-  //   ],
-  //   [
-  //     "nama" => "doddy ferdiansyah",
-  //     "nrp" => "987654321",
-  //     "email" => "doddy@gmail.com",
-  //     "jurusan" => "teknik industri"
-  //   ],
-  //   [
-  //     "nama" => "erik doang",
-  //     "nrp" => "654987654",
-  //     "email" => "erik@gmail.com",
-  //     "jurusan" => "teknik bubut"
-  //   ]
-  // ];
-
-  private $dbh; //database handler
-  private $stmt; //statement
+  private $table = 'mahasiswa';
+  private $db;
 
   public function __construct()
   {
-    //data source name
-    $dsn = 'mysql:host=localhost;dbname=phpmvc';
-
-    try {
-      $this->dbh = new PDO($dsn, 'root', '');
-    } catch (PDOException $e) {
-      die($e->getMessage());
-    }
+    $this->db = new Database;
   }
 
   public function getAllMahasiswa()
   {
-    $this->stmt = $this->dbh->prepare('SELECT * FROM mahasiswa');
-    $this->stmt->execute();
-    return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+    $this->db->query('SELECT * FROM ' . $this->table);
+    return $this->db->resultSet();
+  }
+
+  public function getMahasiswaById($id)
+  {
+    $this->db->query('SELECT * FROM '  . $this->table . ' WHERE id=:id'); //id=:id untuk menghindari sql injection
+    $this->db->bind('id', $id);
+    return $this->db->single();
   }
 }
